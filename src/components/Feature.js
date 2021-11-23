@@ -49,7 +49,7 @@ try {
     setIsLoading(false);
     
 }
-}}>SOME SEARCH TERM</a>    
+}}>{ searchValue }</a>    
 </span>
 
 }
@@ -89,28 +89,35 @@ try {
  * 
  * This component should be exported as default.
  */
-//  const Feature = (props) => {
-//     const { featuredResult, title, dated, images, primaryimageurl, description, culture, style, technique, medium, dimensions, people, department, division, contact, creditline  } = props;
-//     if (!featuredResult) {
-//         return <main id="feature">
-//             <div className="object-feature">
-//              <header>
-//                <h3>OBJECT TITLE</h3>
-//                <h4>WHEN IT IS DATED</h4>
-//              </header>
-//              <section className="facts">
-//                <span className="title">FACT NAME</span>
-//                <span className="content">FACT VALUE</span>
-//                <span className="title">NEXT FACT NAME</span>
-//                <span className="content">NEXT FACT VALUE</span>
-//              </section>
-//              <section className="photos">
-//                <img src=IMAGE_URL alt=SOMETHING_WORTHWHILE />
-//              </section>
-//            </div>
-//          </main>
+ const Feature = (props) => {
+    const { featuredResult } = props;
 
-// }
+    const { title, dated, images, primaryimageurl, description, culture, style, technique, medium, dimensions, people, department, division, contact, creditline  } = featuredResult;
+
+    
+        return <main id="feature">
+            <div className="object-feature">
+             <header>
+               <h3>{ title }</h3>
+               <h4>{ dated }</h4>
+             </header>
+             <section className="facts"> 
+             { 
+                description ? 
+                <Fragment >
+                    <span className="title">FACT NAME</span>
+                    <span className="content">FACT VALUE</span> 
+               <Fragment/> : null
+
+             }
+             </section>
+             <section className="photos">
+               <img src='IMAGE_URL' alt='SOMETHING_WORTHWHILE' />
+             </section>
+           </div>
+         </main>
+
+}
 
 
 export default Feature;
